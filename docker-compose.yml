@@ -1,0 +1,18 @@
+version: '3'
+services:
+  dvwa:
+    image: vulnerables/web-dvwa
+    ports:
+      - "80:80"
+  kali:
+    image: kalilinux/kali-rolling
+    container_name: kali-pentesting
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./wordlists:/wordlists
+    networks:
+      - lab-network
+networks:
+  lab-network:
+    driver: bridge
